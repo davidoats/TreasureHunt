@@ -92,9 +92,9 @@ public class TileManager {
       double screenY = worldY - gp.player.WorldY +gp.player.screenY;
 
       //basicly Render Distance 
-      if (worldX + 2* (GamePanel.tileSize) > gp.player.WorldX - gp.player.screenX && 
+      if (worldX + 1* (GamePanel.tileSize) > gp.player.WorldX - gp.player.screenX && 
           worldX - 2* GamePanel.tileSize < gp.player.WorldX + gp.player.screenX && 
-          worldY + 2*GamePanel.tileSize > gp.player.WorldY - gp.player.screenY && 
+          worldY + 1*GamePanel.tileSize > gp.player.WorldY - gp.player.screenY && 
           worldY - 2*GamePanel.tileSize < gp.player.WorldY + gp.player.screenY)  {
         g2.drawImage(tile[tileNum].image, (int)screenX, (int)screenY, GamePanel.tileSize, GamePanel.tileSize, null);
       }

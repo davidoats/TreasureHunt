@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
 import entity.Player;
+import object.SuperObject;
 import tile.TileManager;
 
 public class GamePanel extends JPanel implements Runnable{
@@ -32,10 +33,12 @@ public class GamePanel extends JPanel implements Runnable{
   static Dimension screenDimension = new Dimension(screenWidth, screenHeight);
 
   public CollisionChecker cChecker = new CollisionChecker(this);
+  public AssetSetter aSetter = new AssetSetter(this);
   TileManager tileM = new TileManager(this);
   KeyHandler keyH = new KeyHandler(this);
   Thread gameThread;
   public Player player = new Player(this,keyH);
+  public SuperObject obj[] = new SuperObject[10];
 
   public GamePanel() {
     this.setPreferredSize(screenDimension);
@@ -43,6 +46,10 @@ public class GamePanel extends JPanel implements Runnable{
     this.setDoubleBuffered(true);
     this.addKeyListener(keyH);
     this.setFocusable(true);
+  }
+
+  public void setupGame() {
+    aSetter.setObject();
   }
 
   int zoomCounter = 0;
@@ -138,6 +145,13 @@ public class GamePanel extends JPanel implements Runnable{
     Graphics2D g2 = (Graphics2D)g;
 
     tileM.draw(g2);
+    
+    for(int i =0; i<obj.length; i++) {
+      if (obj[i] != null) {
+        obj[i].draw(g2, this);
+      }
+    }
+
     player.draw(g2);
     g2.dispose();
   }
