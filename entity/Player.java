@@ -18,6 +18,7 @@ public class Player extends Entity{
 
   public final int screenX;
   public final int screenY;
+  int hasKey = 0;
 
   public Player(GamePanel gp, KeyHandler keyH) {
     this.gp = gp;
@@ -27,7 +28,8 @@ public class Player extends Entity{
     screenY = GamePanel.screenHeight/2 - (GamePanel.tileSize/2);
 
     solidArea = new Rectangle(20,24,24,32);    //Player Colision Hitbox
-
+    solidAreaDefaultX = solidArea.x;
+    solidAreaDefaultY = solidArea.y;
 
     setDefaultValues();
     getPlayerImage();
@@ -71,6 +73,10 @@ public class Player extends Entity{
         collisionOn = false;
       gp.cChecker.checkTile(this);
 
+      int objIndex = gp.cChecker.checkObject(this, true);
+      interactObject(objIndex);
+
+
       if(collisionOn == false) {
         switch(direction) {
           case "up":
@@ -95,8 +101,32 @@ public class Player extends Entity{
         spriteCounter = 0;
       }
 
+      
+
       gp.zoomInOut();
   }
+
+  public void interactObject(int i) {
+        if (i != 999) {
+          
+          String objectName = gp.obj[i].name;
+
+          switch(objectName) {
+            case "Key":
+              hasKey++;
+              gp.obj[i] = null;
+              break;
+            case "Door":
+              if (hasKey > 0) {
+                gp.obj[i] = null;
+                hasKey--;
+              }
+              break;
+            case "Chest":
+              break;
+          }
+        }
+      }
 
   public void draw(Graphics2D g2) {
    // g2.setColor(Color.white);
