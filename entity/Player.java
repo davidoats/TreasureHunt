@@ -19,6 +19,7 @@ public class Player extends Entity{
   public final int screenX;
   public final int screenY;
   int hasKey = 0;
+  public double speedMultiplier = 1;
 
   public Player(GamePanel gp, KeyHandler keyH) {
     this.gp = gp;
@@ -39,7 +40,7 @@ public class Player extends Entity{
       WorldX = GamePanel.tileSize *10;
       WorldY = GamePanel.tileSize *15;
       //speed = 4;
-      speed = gp.worldWidth/800;
+      speed = (gp.worldWidth/800)* speedMultiplier;
       direction = "down";
   }
 
@@ -123,6 +124,11 @@ public class Player extends Entity{
               }
               break;
             case "Chest":
+              break;
+            case "Boots":
+              speedMultiplier = 1.25;
+              // 
+              gp.obj[i] =null;
               break;
           }
         }

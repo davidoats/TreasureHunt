@@ -91,10 +91,17 @@ public class GamePanel extends JPanel implements Runnable{
     double newPlayerWorldX = player.WorldX * multiplier;
     double newPlayerWorldY = player.WorldY * multiplier;
 
+    for (int i = 0; i<obj.length; i++) {
+      if (obj[i] != null) {
+        obj[i].worldX *= multiplier;
+        obj[i].worldY *= multiplier;
+      }
+    } 
+
     player.WorldX = newPlayerWorldX;
     player.WorldY = newPlayerWorldY;
 
-    player.speed = (double)newWorldWidth/800;
+    player.speed = ((double)newWorldWidth/800)* player.speedMultiplier; //speed definded here 
   }
 
   public void startGameThread() {

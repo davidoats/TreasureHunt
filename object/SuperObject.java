@@ -11,7 +11,7 @@ public class SuperObject {
   public BufferedImage image;
   public String name;
   public boolean collision = false;
-  public int worldX, worldY;
+  public double worldX, worldY;
   public Rectangle solidArea = new Rectangle(0,0,64,64);
   public int solidAreaDefaultX = 0;
   public int solidAreaDefaultY = 0;
