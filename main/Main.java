@@ -11,7 +11,7 @@ public class Main {
     window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     
     window.setResizable(true);
-    window.setTitle("2D Overhead ");
+    window.setTitle("Treasure Hunt");
 
     window.setMinimumSize(GamePanel.screenDimension);
     window.setMaximumSize(GamePanel.screenDimension);

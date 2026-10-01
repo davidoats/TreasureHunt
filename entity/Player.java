@@ -18,7 +18,7 @@ public class Player extends Entity{
 
   public final int screenX;
   public final int screenY;
-  int hasKey = 0;
+  public int hasKey = 0;
   public double speedMultiplier = 1;
 
   public Player(GamePanel gp, KeyHandler keyH) {
@@ -37,10 +37,10 @@ public class Player extends Entity{
   }
 
   public void setDefaultValues() {
-      WorldX = GamePanel.tileSize *10;
-      WorldY = GamePanel.tileSize *15;
+      WorldX = GamePanel.tileSize *23;
+      WorldY = GamePanel.tileSize *21;
       //speed = 4;
-      speed = (gp.worldWidth/800)* speedMultiplier;
+      speed = ((GamePanel.tileSize * gp.maxWorldCol)/800)* speedMultiplier;
       direction = "down";
   }
 
@@ -116,18 +116,27 @@ public class Player extends Entity{
             case "Key":
               hasKey++;
               gp.obj[i] = null;
+              gp.playSE(1);
+              gp.ui.showMessage("You got a key!");
               break;
             case "Door":
               if (hasKey > 0) {
                 gp.obj[i] = null;
+                gp.playSE(4);
                 hasKey--;
+                gp.ui.showMessage("You've opened the door!");
+              } else {
+                gp.ui.showMessage("You need a key to enter!");
               }
               break;
             case "Chest":
+              gp.ui.gameFinished = true;
+              gp.stopMusic();
+              gp.playSE(2);
               break;
             case "Boots":
               speedMultiplier = 1.25;
-              // 
+              gp.playSE(3);
               gp.obj[i] =null;
               break;
           }

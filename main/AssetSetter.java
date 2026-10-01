@@ -22,6 +22,10 @@ public class AssetSetter {
     gp.obj[1].worldX = 23 *GamePanel.tileSize;
     gp.obj[1].worldY = 40 *GamePanel.tileSize;
 
+    gp.obj[4] = new OBJ_Key();
+    gp.obj[4].worldX =  37*GamePanel.tileSize;
+    gp.obj[4].worldY = 7 *GamePanel.tileSize;
+
     gp.obj[2] = new OBJ_Chest();
     gp.obj[2].worldX = 9 *GamePanel.tileSize;
     gp.obj[2].worldY = 7 *GamePanel.tileSize;
@@ -30,12 +34,16 @@ public class AssetSetter {
     gp.obj[3].worldX = 10 *GamePanel.tileSize;
     gp.obj[3].worldY = 11 *GamePanel.tileSize;
 
-    gp.obj[4] = new OBJ_Door();
-    gp.obj[4].worldX =  37*GamePanel.tileSize;
-    gp.obj[4].worldY = 7 *GamePanel.tileSize;
+    gp.obj[5] = new OBJ_Door();
+    gp.obj[5].worldX = 14 *GamePanel.tileSize;
+    gp.obj[5].worldY = 28 *GamePanel.tileSize;
 
-    gp.obj[5] = new OBJ_Boots();
-    gp.obj[5].worldX =  37 *GamePanel.tileSize;
-    gp.obj[5].worldY = 42 *GamePanel.tileSize;
+    gp.obj[6] = new OBJ_Door();
+    gp.obj[6].worldX = 8 *GamePanel.tileSize;
+    gp.obj[6].worldY = 20 *GamePanel.tileSize;
+
+    gp.obj[8] = new OBJ_Boots();
+    gp.obj[8].worldX =  37 *GamePanel.tileSize;
+    gp.obj[8].worldY = 42 *GamePanel.tileSize;
   }
 }
